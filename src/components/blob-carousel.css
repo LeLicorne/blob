@@ -1,0 +1,106 @@
+.blob-carousel {
+  --blob-carousel-foreground: currentColor;
+  --blob-carousel-border: rgb(128 128 128 / 0.4);
+  --blob-carousel-hover: rgb(128 128 128 / 0.15);
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+.blob-carousel__viewport {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.blob-carousel__viewport:active {
+  cursor: grabbing;
+}
+
+.blob-carousel__viewport:focus-visible {
+  outline: 2px solid var(--blob-carousel-foreground);
+  outline-offset: -2px;
+}
+
+.blob-carousel__stage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.blob-carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 0 0 28px;
+}
+
+.blob-carousel__button {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid var(--blob-carousel-border);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.2s;
+}
+
+.blob-carousel__button:hover {
+  background: var(--blob-carousel-hover);
+}
+
+.blob-carousel__button:focus-visible,
+.blob-carousel__dot:focus-visible {
+  outline: 2px solid var(--blob-carousel-foreground);
+  outline-offset: 2px;
+}
+
+.blob-carousel__dots {
+  display: flex;
+  gap: 8px;
+}
+
+.blob-carousel__dot {
+  color: inherit;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--blob-carousel-border);
+  cursor: pointer;
+  transition:
+    background 0.3s,
+    transform 0.3s;
+}
+
+.blob-carousel__dot[aria-current='true'] {
+  background: var(--blob-carousel-foreground);
+  transform: scale(1.4);
+}
+
+.blob-carousel__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.blob-grid {
+  position: relative;
+  width: 100%;
+}
